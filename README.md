@@ -22,13 +22,13 @@ Agora o programa utiliza **ponteiros** e **alocação dinâmica de memória**.
 ### Bubble Sort
 
 <p align="center">
-  <img src="[./bubble.gif](https://www.lavivienpost.net/wp-content/uploads/2022/01/bubble-640.gif)" alt="Bubble Sort Animation" />
+  <img src="https://github.com/user-attachments/assets/eaf3ccc2-ff74-48e8-890b-52f5a8c7aec4" alt="Bubble Sort Animation" />
 </p>
 
 ### Selection Sort
 
 <p align="center">
-  <img src="[./selection.gif](https://www.lavivienpost.net/wp-content/uploads/2022/01/selection-600.gif)" alt="Selection Sort Animation" />
+  <img src="https://github.com/user-attachments/assets/315b4f98-f4dc-4b43-8691-42614a00d381" alt="Selection Sort Animation" />
 </p>
 
 
