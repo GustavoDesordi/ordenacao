@@ -17,6 +17,21 @@ Agora o programa utiliza **ponteiros** e **alocação dinâmica de memória**.
   - **Ordem decrescente**
 - O programa mostra os **20 primeiros** e os **20 últimos números** de cada vetor.
 
+- ## Exemplo Visual dos Algoritmos de Ordenação
+
+### Bubble Sort
+
+<p align="center">
+  <img src="[./bubble.gif](https://www.lavivienpost.net/wp-content/uploads/2022/01/bubble-640.gif)" alt="Bubble Sort Animation" />
+</p>
+
+### Selection Sort
+
+<p align="center">
+  <img src="[./selection.gif](https://www.lavivienpost.net/wp-content/uploads/2022/01/selection-600.gif)" alt="Selection Sort Animation" />
+</p>
+
+
 ## Principais mudanças em relação ao trabalho anterior
 
 - Uso de **malloc** para criar os vetores de forma dinâmica.
