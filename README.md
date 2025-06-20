@@ -22,13 +22,13 @@ Agora o programa utiliza **ponteiros** e **alocação dinâmica de memória**.
 ### Bubble Sort
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/eaf3ccc2-ff74-48e8-890b-52f5a8c7aec4" alt="Bubble Sort Animation" />
+  <img src="https://github.com/user-attachments/assets/eaf3ccc2-ff74-48e8-890b-52f5a8c7aec4" alt="Bubble Sort Animation" width="250"/>
 </p>
 
 ### Selection Sort
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/315b4f98-f4dc-4b43-8691-42614a00d381" alt="Selection Sort Animation" />
+  <img src="https://github.com/user-attachments/assets/315b4f98-f4dc-4b43-8691-42614a00d381" alt="Selection Sort Animation" width="250"/>
 </p>
 
 
