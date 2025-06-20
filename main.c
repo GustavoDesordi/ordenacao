@@ -2,89 +2,124 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define N 1000
+#define N 1000  // Quantidade de números no vetor
 
-void gerarVetor(int vetor[], int tamanho) { // essa funcao vai gerar os numeros aleatorios
+// Função que cria o vetor com números aleatórios
+void gerarVetor(int *vetor, int tamanho) {
     for (int i = 0; i < tamanho; i++) {
-        vetor[i] = rand() % 10000;
+        *(vetor + i) = rand() % 10000;  // Cada posição recebe um número de 0 a 9999
     }
 }
 
-void copiarVetor(int origem[], int destino[], int tamanho) { // essa funcao vai gerar copias do vetor original
+// Função que faz uma cópia de um vetor pra outro
+void copiarVetor(int *origem, int *destino, int tamanho) {
     for (int i = 0; i < tamanho; i++) {
-        destino[i] = origem[i];
+        *(destino + i) = *(origem + i);  // Copia cada número de uma posição pra outra
     }
 }
 
-void imprimirVetor(int vetor[], int tamanho) { // essa funcao vai imprimir os 20 primeiros e 20 ultimos numeros do vetor
-    printf("Primeiros 20 elementos: ");
-    for (int i = 0; i < 20; i++)
-        printf("%d ", vetor[i]);
-
-    printf("\nÚltimos 20 elementos: ");
-    for (int i = tamanho - 20; i < tamanho; i++)
-        printf("%d ", vetor[i]);
+// Função que imprime só os 20 primeiros e os 20 últimos números do vetor
+void imprimirVetor(int *vetor, int tamanho) {
+    printf("Primeiros 20 numeros: ");
+    for (int i = 0; i < 20; i++) {
+        printf("%d ", *(vetor + i));
+    }
+    printf("\nUltimos 20 numeros: ");
+    for (int i = tamanho - 20; i < tamanho; i++) {
+        printf("%d ", *(vetor + i));
+    }
     printf("\n\n");
 }
 
-void selectionSort(int vetor[], int tamanho, int crescente) { // selection sort, esta funcao procura o menor (ou maior) número do vetor e coloca ele na posição correta
+// Função que organiza os números usando o Selection Sort
+void selectionSort(int *vetor, int tamanho, int crescente) {
     for (int i = 0; i < tamanho - 1; i++) {
-        int idx = i;
+        int idx = i;  // Salva a posição atual
+
         for (int j = i + 1; j < tamanho; j++) {
-            if ((crescente && vetor[j] < vetor[idx]) || (!crescente && vetor[j] > vetor[idx])) {
-                idx = j;
+            // Se for pra organizar em ordem crescente
+            if (crescente && *(vetor + j) < *(vetor + idx)) {
+                idx = j;  // Achei um número menor
+            }
+            // Se for pra organizar em ordem decrescente
+            else if (!crescente && *(vetor + j) > *(vetor + idx)) {
+                idx = j;  // Achei um número maior
             }
         }
+
+        // Troca de lugar se precisar
         if (idx != i) {
-            int temp = vetor[i];
-            vetor[i] = vetor[idx];
-            vetor[idx] = temp;
+            int temp = *(vetor + i);
+            *(vetor + i) = *(vetor + idx);
+            *(vetor + idx) = temp;
         }
     }
 }
 
-void bubbleSort(int vetor[], int tamanho, int crescente) { // bubble sort, esta funcao compara dois numeros no vetor que se estiverem na ordem errada, ela troca eles
+// Função que organiza os números usando o Bubble Sort
+void bubbleSort(int *vetor, int tamanho, int crescente) {
     for (int i = 0; i < tamanho - 1; i++) {
         for (int j = 0; j < tamanho - i - 1; j++) {
-            if ((crescente && vetor[j] > vetor[j + 1]) || (!crescente && vetor[j] < vetor[j + 1])) {
-                int temp = vetor[j];
-                vetor[j] = vetor[j + 1];
-                vetor[j + 1] = temp;
+            // Se for pra organizar em ordem crescente
+            if (crescente && *(vetor + j) > *(vetor + j + 1)) {
+                int temp = *(vetor + j);
+                *(vetor + j) = *(vetor + j + 1);
+                *(vetor + j + 1) = temp;
+            }
+            // Se for pra organizar em ordem decrescente
+            else if (!crescente && *(vetor + j) < *(vetor + j + 1)) {
+                int temp = *(vetor + j);
+                *(vetor + j) = *(vetor + j + 1);
+                *(vetor + j + 1) = temp;
             }
         }
     }
 }
 
 int main() {
-    srand(time(NULL)); // randomiza os numeros toda vez utilizando o srand ao inves do rand
+    srand(time(NULL));  // Faz os números aleatórios mudarem toda vez que o programa roda
 
-    int original[N], copia1[N], copia2[N], copia3[N], copia4[N];
+    // Criando os vetores de forma dinâmica (alocando espaço na memória)
+    int *original = (int*) malloc(N * sizeof(int));
+    int *copia1 = (int*) malloc(N * sizeof(int));
+    int *copia2 = (int*) malloc(N * sizeof(int));
+    int *copia3 = (int*) malloc(N * sizeof(int));
+    int *copia4 = (int*) malloc(N * sizeof(int));
 
-    gerarVetor(original, N); // gera os numeros aleatorios
+    // Gera os números aleatórios no vetor original
+    gerarVetor(original, N);
 
+    // Faz as 4 cópias do vetor original (uma pra cada ordenação)
     copiarVetor(original, copia1, N);
     copiarVetor(original, copia2, N);
     copiarVetor(original, copia3, N);
     copiarVetor(original, copia4, N);
 
-    printf("Vetor Original:\n"); // a partir daqui o codigo vai imprimir os valores ate o fim
+    // Mostra o vetor original
+    printf("Vetor Original:\n");
     imprimirVetor(original, N);
 
+    // Aqui ordena usando Selection Sort - Crescente
     selectionSort(copia1, N, 1);
-    printf("Selection Sort Crescente:\n");
+    printf("Selection Sort - Crescente:\n");
     imprimirVetor(copia1, N);
 
+    // Aqui ordena usando Selection Sort - Decrescente
     selectionSort(copia2, N, 0);
-    printf("Selection Sort Decrescente:\n");
+    printf("Selection Sort - Decrescente:\n");
     imprimirVetor(copia2, N);
 
+    // Aqui ordena usando Bubble Sort - Crescente
     bubbleSort(copia3, N, 1);
-    printf("Bubble Sort Crescente:\n");
+    printf("Bubble Sort - Crescente:\n");
     imprimirVetor(copia3, N);
 
+    // Aqui ordena usando Bubble Sort - Decrescente
     bubbleSort(copia4, N, 0);
-    printf("Bubble Sort Decrescente:\n");
+    printf("Bubble Sort - Decrescente:\n");
     imprimirVetor(copia4, N);
+
+    //opa professor lucas, tudo certo?
 
     return 0;
 }
